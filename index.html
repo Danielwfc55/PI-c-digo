@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cadastro e Matrícula</title>
+    <style>
+        /* Estilos CSS podem ser adicionados aqui */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="tel"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Cadastro e Matrícula</h1>
+    </header>
+    
+    <main>
+        <form id="cadastro">
+            <h2>Opções de Cadastro/Registro</h2>
+            <select id="tipoCadastro">
+                <option value="pessoaFisica">Pessoa Física</option>
+                <option value="pessoaJuridica">Pessoa Jurídica</option>
+                <option value="professor">Professor</option>
+                <option value="fornecedor">Fornecedor</option>
+                <option value="aluno">Aluno</option>
+            </select>
+            
+            <div id="camposCadastro">
+                <!-- Campos relevantes para preenchimento de acordo com a escolha -->
+            </div>
+            
+            <input type="submit" value="Confirmar Cadastro/Registro">
+        </form>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Sistema de Cadastro e Matrícula</p>
+    </footer>
+
+    <script>
+        document.getElementById('tipoCadastro').addEventListener('change', function() {
+            var tipo = this.value;
+            var camposCadastro = document.getElementById('camposCadastro');
+            camposCadastro.innerHTML = '';
+
+            switch (tipo) {
+                case 'pessoaFisica':
+                    camposCadastro.innerHTML = `
+                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="Endereço">
+                        <input type="tel" placeholder="Telefone">
+                    `;
+                    break;
+                case 'pessoaJuridica':
+                case 'fornecedor':
+                    camposCadastro.innerHTML = `
+                        <input type="text" placeholder="Nome da Empresa">
+                        <input type="text" placeholder="Endereço">
+                        <input type="tel" placeholder="Telefone">
+                        <input type="text" placeholder="CNPJ">
+                    `;
+                    break;
+                case 'professor':
+                    camposCadastro.innerHTML = `
+                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="Endereço">
+                        <input type="tel" placeholder="Telefone">
+                        <input type="text" placeholder="Disciplinas que lecionará">
+                    `;
+                    break;
+                case 'aluno':
+                    camposCadastro.innerHTML = `
+                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="Endereço">
+                        <input type="tel" placeholder="Telefone">
+                        <!-- Adicione aqui os campos para matrícula -->
+                    `;
+                    break;
+                default:
+                    camposCadastro.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
